@@ -34,7 +34,7 @@ export default function Header() {
 
           <Link to="/" >
             <h1 className='font-bold text-sm sm:text-xl flex items-center flex-wrap'>
-                <span className='text-green-500'>Zoro</span>
+                <span className='text-green-500'>JoyBoy</span>
                 <span className='text-slate-700'>Estate&nbsp;</span>
                 <MdOutlineRealEstateAgent className='text-slate-700'/>
             </h1>

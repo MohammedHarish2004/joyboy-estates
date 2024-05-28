@@ -8,7 +8,8 @@ import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserStart,
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
-
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 export default function Profile() {
 
@@ -79,11 +80,15 @@ export default function Profile() {
         return;
       }
       dispatch(updateUserSuccess(data))
-      toast.success("User Updated Successfully!");
+      iziToast.success({
+        icon: 'fas fa-check-circle',
+        message: '<b>Updated successfully!</b>',
+        position: 'topRight',
+        timeout:1500
+      });
 
     } catch (error) {
       dispatch(updateUserFailure(error.message))
-      toast.error(error.message);
     }
   };
 
@@ -112,7 +117,12 @@ export default function Profile() {
           return;
         }
         dispatch(deleteUserSuccess(data));
-        toast.success('Account deleted successfully!');
+        iziToast.success({
+          icon: 'fas fa-check-circle',
+          message: '<b>Account Deleted successfully!</b>',
+          position: 'topRight',
+          timeout:1500
+        });
       }
       
     } catch (error) {
@@ -143,7 +153,12 @@ export default function Profile() {
           return;
         }
         dispatch(signOutSuccess(data));
-        toast.success("Signed out successfully!");
+        iziToast.success({
+          icon: 'fas fa-check-circle',
+          message: '<b>Signed Out successfully!</b>',
+          position: 'topRight',
+          timeout:1500
+        });
       }
 
     } catch (error) {
@@ -167,7 +182,6 @@ export default function Profile() {
         return;
       }
       if (data < 1) return toast.error('No Listing Available')
-        toast.success("Showing Your Listings");
         setUserListings(data); // important
     
     } catch (error) {
@@ -196,7 +210,12 @@ export default function Profile() {
           console.log(data.message);
           return;
         }
-        toast.success('Listing deleted successfully!');
+        iziToast.success({
+          icon: 'fas fa-check-circle',
+          message: '<b>Listing deleted successfully!</b>',
+          position: 'topRight',
+          timeout:1500
+        });
         setUserListings( (prev) => prev.filter((listing) => listing._id !== listingId ))
       }
     } catch (error) {
@@ -207,7 +226,7 @@ export default function Profile() {
   return (
     <div className='max-w-md mx-auto p-2'>
 
-      <h1 className='text-3xl text-center font-bold my-5 '>Profile</h1>
+      <h1 className='text-3xl text-center font-semibold my-5 '>Profile</h1>
 
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
         <input 
@@ -220,8 +239,8 @@ export default function Profile() {
         <div className="self-center flex items-end">
           <img 
             src={formData.avatar || currentUser.avatar} 
-            alt="Profile" className="rounded-full w-24 h-24 object-cover  mt-2"
-            onClick={()=>fileRef.current.click()} /><FaEdit className="text-slate-700 -ml-2" onClick={()=>fileRef.current.click()}/>
+            alt="Profile" className="rounded-full w-24 h-24 object-cover  mt-2 cursor-pointer"
+            onClick={()=>fileRef.current.click()} /><FaEdit className="text-slate-700 cursor-pointer " onClick={()=>fileRef.current.click()}/>
         </div>
         
         <p className="text-sm text-center">

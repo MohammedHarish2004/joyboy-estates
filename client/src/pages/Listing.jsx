@@ -86,8 +86,8 @@ return (
               Price:
               {listing.offer ? 
               <div className='flex items-center'>
-                <p className='text-red-600 line-through ml-2'>₹ {listing.regularPrice.toLocaleString('en-US')}&nbsp;</p>
-                <p className='text-[20px] sm:text-3xl'>&nbsp;₹ {listing.discountPrice.toLocaleString('en-US')}&nbsp;</p> 
+                <p className='text-red-600 line-through ml-2'>₹ {listing.regularPrice}&nbsp;</p>
+                <p className='text-[20px] sm:text-3xl'>&nbsp;₹ {listing.discountedPrice}&nbsp;</p> 
               </div> 
               : <p>&nbsp;₹ {listing.regularPrice.toLocaleString('en-US')}</p>}
 
@@ -103,7 +103,7 @@ return (
               <p className='bg-red-800 w-full max-w-[200px] text-white text-center font-semibold rounded-md p-2 text-sm sm:text-md'>{listing.type === 'rent' ? 'For Rent' : 'For Sale'}</p>
 
               {listing.offer && (
-                <p className='bg-green-800 w-full max-w-[200px] p-2 text-white rounded-md font-semibold text-center text-sm sm:text-md'>₹ {listing.regularPrice - listing.discountPrice}&nbsp;Discount</p>
+                <p className='bg-green-800 w-full max-w-[200px] p-2 text-white rounded-md font-semibold text-center text-sm sm:text-md'>₹ {listing.regularPrice - listing.discountedPrice}&nbsp;Discount</p>
               )}
             </div>
 

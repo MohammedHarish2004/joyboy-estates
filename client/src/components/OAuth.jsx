@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import { signInSuccess } from '../redux/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 export default function OAuth() {
     const dispatch = useDispatch();
@@ -27,7 +28,12 @@ export default function OAuth() {
             })
             const data = await res.json();
             dispatch(signInSuccess(data));
-            toast.success('User signed in successfully!')
+            iziToast.success({
+                icon: 'fas fa-check-circle',
+                message: '<b>Signed in successfully!</b>',
+                position: 'topRight',
+                timeout:1500
+              });
             navigate('/');
 
         } catch (error) {
@@ -36,6 +42,6 @@ export default function OAuth() {
     };
 
   return (
-    <button onClick={handleGoogleClick} type='button' className='bg-white border-2 p-3 rounded-lg uppercase flex items-center justify-center font-semibold'>continue with Google &nbsp;<FcGoogle /></button>
+    <button onClick={handleGoogleClick} type='button' className='bg-white border-2 p-3 rounded-lg uppercase flex items-center justify-center font-semibold hover:opacity-80'>continue with Google &nbsp;<FcGoogle /></button>
   )
 }

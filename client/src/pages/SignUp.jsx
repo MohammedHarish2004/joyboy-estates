@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import OAuth from '../components/OAuth';
-import toast from 'react-hot-toast';
-
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 export default function SignUp() {
 
@@ -40,7 +40,12 @@ export default function SignUp() {
         return;
       }
         setLoading(false);
-        toast.success("User signed up successfully!");
+        iziToast.success({
+          icon: 'fas fa-check-circle',
+          message: '<b>Signed up successfully!</b>',
+          position: 'topRight',
+          timeout:1500
+        });
         navigate('/sign-in');
       } catch (error) {
         setLoading(false);

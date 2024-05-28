@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
 import OAuth from '../components/OAuth';
 import toast from 'react-hot-toast';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 export default function SignIp() {
 
@@ -40,7 +42,12 @@ export default function SignIp() {
         return;
       }
         dispatch(signInSuccess(data));
-        toast.success('User signed in successfully!')
+        iziToast.success({
+          icon: 'fas fa-check-circle',
+          message: '<b>Signed in successfully!</b>',
+          position: 'topRight',
+          timeout:1500
+        });
         navigate('/');
 
       } catch (error) {
