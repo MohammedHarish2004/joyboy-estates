@@ -269,7 +269,11 @@ export default function Profile() {
         <span className="text-red-700 cursor-pointer flex items-center" onClick={handleSignout}><FaSignOutAlt />&nbsp;Sign Out</span>
       </div>
 
-      <button onClick={handleShowListing} className="text-green-700 w-full justify-center font-semibold flex items-center mt-3 sm:mt-0"><FaList />&nbsp;Show Listings</button>
+      {
+        currentUser && 
+
+        <button onClick={handleShowListing} className="text-green-700 w-full justify-center font-semibold flex items-center mt-3 sm:mt-0"><FaList />&nbsp;Show Listings</button>
+      }
 
       {userListings && userListings.length > 0 && 
         <div className="flex flex-col gap-4" ref={scrollRef}>
@@ -299,6 +303,7 @@ export default function Profile() {
             ))}
         </div>
       }
+    
   
     </div>
   )

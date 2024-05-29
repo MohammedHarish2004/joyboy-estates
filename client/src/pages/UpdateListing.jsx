@@ -9,7 +9,8 @@ import { app } from "../firebase";
 import toast from "react-hot-toast";
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
-
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css'
 
 export default function CreateListing() {
 
@@ -155,7 +156,12 @@ export default function CreateListing() {
       if (data.success === false) {
         toast.error(data.message);
       }
-      toast.success('Listing has been Updated succesfully');
+      iziToast.success({
+        icon: 'fas fa-check-circle',
+        message: '<b>Listing Updated successfully!</b>',
+        position: 'topRight',
+        timeout:1500
+      });
       navigate(`/listing/${data._id}`);
     } catch (error) {
       toast.error(error.message);

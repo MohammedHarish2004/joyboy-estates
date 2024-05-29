@@ -3,7 +3,7 @@ import { MdLocationOn } from 'react-icons/md';
 
 export default function ListingItem({ listing }) {
   return (
-    <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[270px]'>
+    <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[270px] '>
         <Link to={`/listing/${listing._id}`}>
             <img src={listing.imageUrls[0]} alt="listing cover" className='h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300'/>
 
@@ -16,7 +16,7 @@ export default function ListingItem({ listing }) {
                 <p className='text-sm text-gray-600 line-clamp-2'>{listing.description}</p>
                 <p className='text-slate-500 mt-2 font-semibold'>
                     ₹
-                    {listing.offer ? listing.discountedPrice : listing.regularPrice}
+                    {listing.offer ? listing.discountPrice : listing.regularPrice}
                     {listing.type === 'rent' && ' / month'}
                 </p>
 
