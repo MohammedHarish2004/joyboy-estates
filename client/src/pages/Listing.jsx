@@ -87,7 +87,7 @@ return (
               {listing.offer ? 
               <div className='flex items-center'>
                 <p className='text-red-600 line-through ml-2'>₹ {listing.regularPrice}&nbsp;</p>
-                <p className='text-[20px] sm:text-3xl'>&nbsp;₹ {listing.discountedPrice}&nbsp;</p> 
+                <p className='text-[20px] sm:text-3xl'>&nbsp;₹ {listing.discountPrice}&nbsp;</p> 
               </div> 
               : <p>&nbsp;₹ {listing.regularPrice.toLocaleString('en-US')}</p>}
 
